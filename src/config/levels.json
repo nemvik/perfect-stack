@@ -1,0 +1,32 @@
+[
+  {
+    "id": "level-1",
+    "name": "Warmup",
+    "heightTarget": 12,
+    "startWidth": 170,
+    "baseSpeed": 110,
+    "speedRamp": 0.012,
+    "perfectTolerance": 7,
+    "comboForThreeStars": 3
+  },
+  {
+    "id": "level-2",
+    "name": "Windy",
+    "heightTarget": 18,
+    "startWidth": 160,
+    "baseSpeed": 130,
+    "speedRamp": 0.018,
+    "perfectTolerance": 6,
+    "comboForThreeStars": 4
+  },
+  {
+    "id": "level-3",
+    "name": "Needle",
+    "heightTarget": 26,
+    "startWidth": 150,
+    "baseSpeed": 150,
+    "speedRamp": 0.022,
+    "perfectTolerance": 5,
+    "comboForThreeStars": 5
+  }
+]
