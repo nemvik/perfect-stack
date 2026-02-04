@@ -243,11 +243,12 @@ const GameScreen = () => {
 
     if (mode === "levels" && levelId) {
       const target = heightTarget ?? 0;
-      const stars = engine.score.height >= target ? 2 : 0;
+      const baseStars = engine.score.height >= target ? 1 : 0;
       const bonusStar = engine.score.maxCombo >= comboForThreeStars ? 1 : 0;
+      const starsEarned = Math.min(3, baseStars + bonusStar);
       next.levelStars = {
         ...progress.levelStars,
-        [levelId]: Math.max(progress.levelStars[levelId] ?? 0, stars + bonusStar),
+        [levelId]: Math.max(progress.levelStars[levelId] ?? 0, starsEarned),
       };
     }
 

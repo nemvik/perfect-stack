@@ -2,7 +2,7 @@ import { useCallback, useRef } from "react";
 import { clamp } from "../engine/math";
 import { Particle } from "./particles";
 
-export type ScreenShake = {
+type ScreenShake = {
   x: number;
   y: number;
   strength: number;

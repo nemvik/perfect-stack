@@ -48,6 +48,15 @@ describe("engine drop", () => {
     expect(result.isGameOver).toBe(true);
   });
 
+  it("ends game when below min width", () => {
+    const state = createEngineState(config, "endless");
+    state.status = "playing";
+    const prev = state.blocks[state.blocks.length - 1];
+    state.active.x = prev.x + 70;
+    const result = dropBlock(state, config);
+    expect(result.isGameOver).toBe(true);
+  });
+
   it("adds scoring for perfect combo", () => {
     const state = createEngineState(config, "endless");
     state.status = "playing";

@@ -21,9 +21,6 @@ export type GameMode = "endless" | "levels" | "daily";
 export type GameStatus =
   | "idle"
   | "playing"
-  | "dropping"
-  | "resolving"
-  | "paused"
   | "gameover"
   | "levelcomplete";
 

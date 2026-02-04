@@ -80,7 +80,7 @@ export const dropBlock = (state: EngineState, config: EngineConfig): DropResult 
   const isPerfect = Math.abs(overhang) <= state.perfectTolerance;
   const overlap = isPerfect ? state.active.width : state.active.width - Math.abs(overhang);
 
-  if (overlap <= 0) {
+  if (overlap <= 0 || overlap < config.minWidth) {
     state.status = "gameover";
     return {
       isPerfect: false,
