@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Perfect Stack: Timing",
+    "slug": "perfect-stack-timing",
+    "scheme": "perfectstack",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": ["**/*"],
+    "jsEngine": "hermes",
+    "plugins": ["expo-router"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0b0b12"
+      }
+    }
+  }
+}

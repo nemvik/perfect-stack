@@ -1,0 +1,47 @@
+[
+  {
+    "id": "classic",
+    "name": "Classic",
+    "colors": {
+      "stack": "#5EEAD4",
+      "active": "#22D3EE",
+      "background": "#0B0B12",
+      "glow": "#A7F3D0"
+    },
+    "particles": {
+      "color": "#5EEAD4",
+      "size": 3
+    },
+    "unlock": { "type": "free" }
+  },
+  {
+    "id": "sunset",
+    "name": "Sunset",
+    "colors": {
+      "stack": "#FCA5A5",
+      "active": "#F97316",
+      "background": "#1C0F13",
+      "glow": "#FED7AA"
+    },
+    "particles": {
+      "color": "#FDBA74",
+      "size": 4
+    },
+    "unlock": { "type": "bestScore", "value": 40 }
+  },
+  {
+    "id": "mint",
+    "name": "Mint",
+    "colors": {
+      "stack": "#86EFAC",
+      "active": "#34D399",
+      "background": "#021812",
+      "glow": "#BBF7D0"
+    },
+    "particles": {
+      "color": "#6EE7B7",
+      "size": 3
+    },
+    "unlock": { "type": "perfects", "value": 25 }
+  }
+]

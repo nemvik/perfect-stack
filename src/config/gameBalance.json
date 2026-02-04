@@ -1,0 +1,18 @@
+{
+  "baseSpeed": 120,
+  "maxSpeed": 360,
+  "speedRamp": 0.015,
+  "perfectToleranceBase": 6,
+  "toleranceRamp": -0.01,
+  "blockHeight": 22,
+  "startWidth": 180,
+  "minWidth": 40,
+  "cameraSmooth": 0.12,
+  "shakeStrength": 10,
+  "comboCap": 8,
+  "perfectBonus": 2,
+  "comboBonus": 1,
+  "gravity": 520,
+  "overhangFallSpeed": 220,
+  "particleCount": 140
+}
