@@ -36,6 +36,7 @@ describe("engine drop", () => {
     expect(result.isPerfect).toBe(true);
     const last = state.blocks[state.blocks.length - 1];
     expect(last.x).toBe(prev.x);
+    expect(last.width).toBe(prev.width);
   });
 
   it("returns game over when no overlap", () => {

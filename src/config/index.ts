@@ -108,7 +108,7 @@ const toString = (value: unknown, fallback: string) =>
   typeof value === "string" ? value : fallback;
 
 const toArray = <T>(value: unknown, fallback: T[]): T[] =>
-  Array.isArray(value) ? (value as T[]) : fallback;
+  Array.isArray(value) && value.length > 0 ? (value as T[]) : fallback;
 
 const parseBalance = (value: unknown): GameBalance => {
   const raw = typeof value === "object" && value ? (value as GameBalance) : ({} as GameBalance);

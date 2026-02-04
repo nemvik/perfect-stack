@@ -14,21 +14,25 @@ import { SeededRng, seedFromString } from "@/game/engine/rng";
 import { getDateKey } from "@/utils/date";
 
 const buildConfig = (mode: GameMode, levelId?: string) => {
+  const baseConfig = {
+    maxSpeed: gameBalance.maxSpeed,
+    toleranceRamp: gameBalance.toleranceRamp,
+    blockHeight: gameBalance.blockHeight,
+    minWidth: gameBalance.minWidth,
+    comboCap: gameBalance.comboCap,
+    perfectBonus: gameBalance.perfectBonus,
+    comboBonus: gameBalance.comboBonus,
+  };
+
   if (mode === "levels" && levelId) {
     const level = levels.find((item) => item.id === levelId);
     return {
       config: {
         baseSpeed: level?.baseSpeed ?? gameBalance.baseSpeed,
-        maxSpeed: gameBalance.maxSpeed,
         speedRamp: level?.speedRamp ?? gameBalance.speedRamp,
         perfectTolerance: level?.perfectTolerance ?? gameBalance.perfectToleranceBase,
-        toleranceRamp: gameBalance.toleranceRamp,
-        blockHeight: gameBalance.blockHeight,
-        minWidth: gameBalance.minWidth,
         startWidth: level?.startWidth ?? gameBalance.startWidth,
-        comboCap: gameBalance.comboCap,
-        perfectBonus: gameBalance.perfectBonus,
-        comboBonus: gameBalance.comboBonus,
+        ...baseConfig,
       },
       heightTarget: level?.heightTarget,
       comboForThreeStars: level?.comboForThreeStars ?? 3,
@@ -43,16 +47,10 @@ const buildConfig = (mode: GameMode, levelId?: string) => {
     return {
       config: {
         baseSpeed,
-        maxSpeed: gameBalance.maxSpeed,
         speedRamp: gameBalance.speedRamp,
         perfectTolerance: tolerance,
-        toleranceRamp: gameBalance.toleranceRamp,
-        blockHeight: gameBalance.blockHeight,
-        minWidth: gameBalance.minWidth,
         startWidth,
-        comboCap: gameBalance.comboCap,
-        perfectBonus: gameBalance.perfectBonus,
-        comboBonus: gameBalance.comboBonus,
+        ...baseConfig,
       },
       heightTarget: undefined,
       comboForThreeStars: 0,
@@ -62,16 +60,10 @@ const buildConfig = (mode: GameMode, levelId?: string) => {
   return {
     config: {
       baseSpeed: gameBalance.baseSpeed,
-      maxSpeed: gameBalance.maxSpeed,
       speedRamp: gameBalance.speedRamp,
       perfectTolerance: gameBalance.perfectToleranceBase,
-      toleranceRamp: gameBalance.toleranceRamp,
-      blockHeight: gameBalance.blockHeight,
-      minWidth: gameBalance.minWidth,
       startWidth: gameBalance.startWidth,
-      comboCap: gameBalance.comboCap,
-      perfectBonus: gameBalance.perfectBonus,
-      comboBonus: gameBalance.comboBonus,
+      ...baseConfig,
     },
     heightTarget: undefined,
     comboForThreeStars: 0,
@@ -94,7 +86,7 @@ const GameScreen = () => {
     [progress],
   );
 
-  const [hud, setHud] = useState({ score: 0, height: 1, combo: 0, status: "idle" });
+  const [hud, setHud] = useState({ score: 0, height: 1, combo: 0 });
   const [cameraY, setCameraY] = useState(0);
   const [shakeOffset, setShakeOffset] = useState({ x: 0, y: 0 });
   const engineRef = useRef<EngineState>(createEngineState(config, mode, heightTarget));
@@ -156,7 +148,6 @@ const GameScreen = () => {
         score: engine.score.score,
         height: engine.score.height,
         combo: engine.score.combo,
-        status: engine.status,
       });
 
       rafRef.current = requestAnimationFrame(loop);
@@ -186,7 +177,7 @@ const GameScreen = () => {
       emitParticles(
         particles,
         0,
-        -engine.active.y + 40,
+        -engine.active.y + gameBalance.blockHeight * 0.5,
         skin.particles.color,
         24,
       );

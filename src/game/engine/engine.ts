@@ -77,8 +77,8 @@ export const dropBlock = (state: EngineState, config: EngineConfig): DropResult 
 
   const prev = state.blocks[state.blocks.length - 1];
   const overhang = state.active.x - prev.x;
-  const overlap = state.active.width - Math.abs(overhang);
   const isPerfect = Math.abs(overhang) <= state.perfectTolerance;
+  const overlap = isPerfect ? state.active.width : state.active.width - Math.abs(overhang);
 
   if (overlap <= 0) {
     state.status = "gameover";
@@ -99,7 +99,7 @@ export const dropBlock = (state: EngineState, config: EngineConfig): DropResult 
   };
 
   const overhangWidth = Math.abs(overhang);
-  const overhangPiece: OverhangPiece | undefined = overhangWidth > 0
+  const overhangPiece: OverhangPiece | undefined = !isPerfect && overhangWidth > 0
     ? {
         id: nextId(),
         x:
